@@ -1,0 +1,11 @@
+# Optional extras for GOLDEN-10. Not required to run the simulation.
+#
+# These enable the real Ultralytics YOLO detector path
+# (golden10.perception.detectors.UltralyticsDetector) instead of the
+# synthetic detector used in the demo.
+#
+# WARNING: ultralytics pulls in torch, which is a large download and may not
+# yet publish wheels for the newest Python releases.
+
+ultralytics>=8.3.0
+pyyaml>=6.0.1

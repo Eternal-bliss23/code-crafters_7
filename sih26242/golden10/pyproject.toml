@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "golden10"
+version = "0.1.0"
+description = "GOLDEN-10 - autonomous drone + rover first-response simulation (offline, stdlib-first)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "GOLDEN-10 Team" }]
+keywords = ["drone", "rover", "disaster-response", "simulation", "golden-hour"]
+# Core has NO third-party requirements: the whole simulation is standard library.
+dependencies = []
+
+[project.optional-dependencies]
+# Real-vision path (not required for the simulation). Heavy: pulls torch.
+vision = ["ultralytics>=8.3.0", "pyyaml>=6.0.1"]
+dev = ["pytest>=8.0", "ruff>=0.6.0"]
+
+[project.scripts]
+golden10 = "golden10.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

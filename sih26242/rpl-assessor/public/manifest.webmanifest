@@ -1,0 +1,19 @@
+{
+  "name": "RPL Assessor",
+  "short_name": "RPL-Assessor",
+  "description": "AI-assisted, NSQF-aligned Recognition of Prior Learning assessment. Works offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

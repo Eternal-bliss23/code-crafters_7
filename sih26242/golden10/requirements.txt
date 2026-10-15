@@ -1,0 +1,13 @@
+# GOLDEN-10 runtime requirements.
+#
+# The core simulation is pure standard library (Python >= 3.11) and needs
+# NOTHING installed. Install the project itself so the package imports work:
+#
+#     pip install -e .
+#
+# The only optional third-party dependency is the real vision detector
+# (ultralytics -> torch). It is NOT needed for the simulation. To enable it:
+#
+#     pip install -e ".[vision]"
+#
+# See requirements-optional.txt.

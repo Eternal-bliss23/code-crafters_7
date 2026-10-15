@@ -1,0 +1,70 @@
+# GOLDEN-10 default configuration.
+#
+# Loaded automatically if present (see golden10/config.py:load_config). Every field
+# has a built-in default, so this file only needs to override what you want to change.
+# The values below mirror the code defaults, EXCEPT the two marked [DEMO TUNING].
+
+[drone]
+cruise_speed_mps          = 12.0
+survey_altitude_agl_m     = 60.0
+max_altitude_agl_m        = 120.0   # 400 ft AGL geofence
+hfov_deg                  = 62.0
+hover_power_w             = 155.0
+induced_power_factor      = 0.28
+payload_g                 = 350.0
+wind_mps                  = 6.0
+takeoff_s                 = 8.0
+transit_altitude_agl_m    = 100.0
+rth_reserve_pct           = 15.0    # MoCA trial condition
+aft_reserve_pct           = 5.0
+max_range_m               = 95.0    # slant range to a usable detection
+
+# [DEMO TUNING] The code default is a 33.3 Wh (6S 1500 mAh) pack, which only sustains
+# ~7 min of cruise - not enough to reach the victim cluster in this 0.54 km^2 scenario,
+# so the mission returned 0/6. This is a longer-endurance survey pack that lets the
+# simulation actually complete its search and find victims. Set back to 33.3 to
+# reproduce the default (and the empty result).
+battery_capacity_wh       = 300.0
+
+[rover]
+speed_dry_mps             = 2.0
+speed_water_mps           = 0.85
+speed_debris_mps          = 0.55
+arrive_tolerance_m        = 6.0
+payload_drop_s            = 45.0
+
+[sensors]
+rgb_confidence_night      = 0.28
+rgb_confidence_day        = 0.86
+lwir_confidence_night     = 0.93
+lwir_confidence_day       = 0.81
+acoustic_confidence_submerged = 0.78
+acoustic_confidence_dry   = 0.14
+detection_threshold       = 0.55
+range_falloff_per_100m    = 0.28
+false_positives_per_scan  = 0.11
+
+[net]
+cellular_baseline         = 0.95
+towers_down               = true
+mesh_floor                = 0.32
+mesh_degraded_at          = 0.45
+max_queue                 = 400
+
+[scenario]
+name                      = "flood_village_night"
+bounds_m                  = [-40.0, -40.0, 780.0, 620.0]
+is_night                  = true
+ambient_c                 = 27.0
+baseline_t3_s             = 1770.0  # 29.5 min conventional response
+seed                      = 20260930
+
+[mission]
+dt_s                      = 1.0
+coverage_overlap          = 0.80
+telemetry_stride          = 3
+event_log_limit           = 1200
+
+# [DEMO TUNING] Full lawnmower coverage of this scenario needs ~64 min of flight; the
+# code default cap of 2400 s ends the mission early. Raised so the search can finish.
+max_duration_s            = 7200.0
